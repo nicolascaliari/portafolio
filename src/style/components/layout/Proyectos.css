@@ -1,0 +1,16 @@
+
+
+.Card {
+    display: grid;
+    grid-template-columns: repeat(3 ,1fr);
+    gap: 20px;
+   width: 300px;
+   height: 200px;
+   
+}
+
+.boton-card {
+    background-color: #417A6B;
+    padding: 5px;
+}
+

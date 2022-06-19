@@ -1,0 +1,83 @@
+
+  
+  .div-container {
+    background-color: rgb(229, 231, 235);
+    height:540px;
+    width: 100%;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.418);
+    max-width: 600px;
+  }
+  
+ 
+  .contacto-link{
+    text-decoration: none;
+  }
+  
+  .contacto-link:hover{
+    background-color: rgba(255, 85, 55, 0.185);;
+  }
+  
+  .contacto-link::after{
+    background-color: rgba(255, 85, 55, 0.185);;
+  }
+  
+  
+  .form-contacto  form input {
+    width: 90%;
+    padding: 10px;
+    margin: 20px;
+   
+  }
+  
+  
+  
+  
+  .boton-formulario {
+    background-color: #ff5437;
+    color: #fff;
+    border-radius: 6px;
+    margin: auto;
+    display: flex;
+    padding: 5px 50px;
+    font-size: 14px;
+    margin-top: 20px;
+    border-radius: 2px;
+    border: 0px;
+  }
+    
+ 
+  
+  .form-contacto input {
+    border: none;
+    border-bottom: 0.5px solid #3498db;
+    background-color: rgb(229, 231, 235);
+    border-radius: 4px;
+  }  
+  
+  
+  @media only screen and (min-width : 768px) {
+    .div-container {
+      background-color: rgb(229, 231, 235);
+      height:520px;
+      width: 100%;
+      margin: auto;
+     margin-top: 90px;
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.418);
+      max-width: 600px;
+  }
+  
+  .div-container h2 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 1000;
+    color: #000;
+    padding: 12px;
+  
+  }
+  
+  
+    
+  }
+
+
+ 

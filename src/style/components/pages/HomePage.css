@@ -1,0 +1,108 @@
+.contenedor-about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+    margin-top: 80px;
+    background-color:  #417A6B;
+    
+}
+
+.contenedor-about h2 {
+    color: #16322A;
+    text-align: center;
+    font-size: 40px;
+    margin-top: 25px;
+}
+
+.div-about {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 15px;
+    margin-top: 45px;
+}
+
+
+.div-about-p  p{
+    text-align: justify;
+    font-size: 20px;
+    width:350px;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    line-height: 30px;
+
+}
+.contenedor-img{
+    position: relative;
+    bottom: 20px;
+}
+.fotoMia {
+    border-radius: 100%;
+    width: 250px;
+   
+}
+
+
+
+
+
+.div-estudios {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 15px;
+    margin-top: 45px;
+}
+
+.misEstudios {
+    margin: 40px 240px 0 0;
+}
+
+
+.misEstudios h3 {
+    color: #FF4D00;
+    font-size: 27px;
+}
+
+
+.contenedor-p-estudios {
+    margin: 0 20px 0 0;
+}
+
+
+.contenedor-p-estudios p {
+    text-align: justify;
+    font-size: 20px;
+    width:600px;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    line-height: 30px;
+    
+}
+
+
+
+
+
+.contenedor-skills {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.contenedor-skills img {
+    width: 80px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.contenedor-skills img:hover {
+    transform: scale(1.2);
+}

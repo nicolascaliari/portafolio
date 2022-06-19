@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    
+}
+
+.App {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    background-color: #F9F6EE;
+}
+
+.contenedor-principal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+.icono {
+    background-color: black;
+    color: black;
+}
+
+.contenedor-proyectos{
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(3 ,1fr);
+    gap: 20px;
+}
+
+.proyectos-titulo {
+    margin-top: 30px;
+}

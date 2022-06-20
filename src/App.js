@@ -41,30 +41,37 @@ function App() {
 <div className='contenedor-proyectos'>  
 <Proyectos
 title = 'fidelityCode'
-text = ''
 boton = 'ver detalle'
+img = 'fidelity'
+/>
+<Proyectos
+title = 'Homebanking'
+boton = 'ver detalle'
+img = 'home'
+/>
+<Proyectos
+title = 'Gimnasio'
+boton = 'ver detalle'
+img = 'gym'
+/>
+<Proyectos
+title = 'Pomodoro'
+boton = 'ver detalle'
+img = 'gym'
+/>
+<Proyectos
+title = 'Dsiney'
+boton = 'ver detalle'
+img = 'gym'
+/>
+<Proyectos
+title = 'Emprendimiento'
+boton = 'ver detalle'
+img = 'emprendimiento'
 />
 
-<Proyectos 
-title = 'GYM'
-boton = 'vsssss'
-/>
-<Proyectos 
-title = 'Restaurant'
-boton ='ver detalle'
-/>
-<Proyectos 
-title = 'homebanking'
-boton = 'ver detalle'
-/>
-<Proyectos 
-title = 'disney'
-boton = 'ver detalle'
-/>
-<Proyectos 
-title = 'pomodoro'
-boton ='ver detalle'
-/>
+
+
 
 </div>
 <Footer />

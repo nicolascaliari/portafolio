@@ -67,7 +67,8 @@
 
 .misEstudios h3 {
     color: #FF4D00;
-    font-size: 27px;
+    font-size:35px;
+    font-weight: 1000;
 }
 
 
@@ -98,7 +99,7 @@
 }
 
 .contenedor-skills img {
-    width: 80px;
+    width: 100px;
     padding: 20px;
     transition: all 0.3s ease;
 }

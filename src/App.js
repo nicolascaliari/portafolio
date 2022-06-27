@@ -1,4 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useState } from "react";
+
+
 
 
 
@@ -6,7 +9,8 @@ import './App.css';
 import Header from './component/layout/Header';
 import Presentacion from './component/layout/Presentacion';
 import Proyectos from './component/layout/Proyectos';
-import Footer from './component/layout/Footer'
+import Footer from './component/layout/Footer';
+
 
 
 
@@ -14,6 +18,8 @@ import Footer from './component/layout/Footer'
 
 import HomePage from './pages/HomePage';
 import ContactPage from './pages/ContactPage';
+
+
 
 
 function App() {
@@ -25,12 +31,23 @@ function App() {
         text=' FULL STACK  DEVELOPER '>
 
       </Presentacion>
+
+
      
+      <div>
+      <h2>Dashboard</h2>
+      <button
+        onClick={() =>
+          (document.querySelector("body").style.background = "#3c3")
+        }
+      >
+        Verde
+      </button>
+    </div>
 
       <BrowserRouter >
         <Header />
         <Routes>
-
           <Route path='/' element={<HomePage />} />
           <Route path='ContactPage' element={<ContactPage />} />
 
@@ -38,45 +55,55 @@ function App() {
       </BrowserRouter>
 
       <h2 className='proyectos-titulo'>Proyectos</h2>
-<div className='contenedor-proyectos'>  
-<Proyectos
-title = 'fidelityCode'
-boton = 'ver detalle'
-img = 'fidelity'
-/>
-<Proyectos
-title = 'Homebanking'
-boton = 'ver detalle'
-img = 'home'
-/>
-<Proyectos
-title = 'Gimnasio'
-boton = 'ver detalle'
-img = 'gym'
-/>
-<Proyectos
-title = 'Pomodoro'
-boton = 'ver detalle'
-img = 'gym'
-/>
-<Proyectos
-title = 'Dsiney'
-boton = 'ver detalle'
-img = 'gym'
-/>
-<Proyectos
-title = 'Emprendimiento'
-boton = 'ver detalle'
-img = 'emprendimiento'
-/>
+      <div className='contenedor-proyectos'>
+        <Proyectos
+          title='fidelityCode'
+          text='Hola esta es una pagina de fidelityCode'
+          boton='ver detalle'
+          img='fidelity'
+
+        />
+        <Proyectos
+          title='Homebanking'
+          text='Hola esta es una pagina de un HomeBnaking'
+          boton='ver detalle'
+          img='home'
+        />
+        <Proyectos
+          title='Gimnasio'
+          text='Hola esta es una pagino de un gimnasio'
+          boton='ver detalle'
+          img='gym'
+        />
+        <Proyectos
+          title='Pomodoro'
+          text='Hola esta es una pagina de proyecto pomodoro'
+          boton='ver detalle'
+          img='gym'
+        />
+        <Proyectos
+          title='Dsiney'
+          text='Hola esta es una pagina de proyecto disney'
+          boton='ver detalle'
+          img='gym'
+        />
+        <Proyectos
+          title='Emprendimiento'
+          text='Hola esta es una pagina de emprendimiento'
+          boton='ver detalle'
+          img='emprendimiento'
+        />
 
 
 
 
-</div>
-<Footer />
+      </div>
+      <Footer />
     </div>
   );
 }
+
+
+
 
 export default App;

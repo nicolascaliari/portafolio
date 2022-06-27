@@ -2,6 +2,7 @@ import React from "react";
 import '../../style/components/layout/Proyectos.css'
 import { Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import Example from './Modal'
 
 
 
@@ -15,10 +16,9 @@ const Proyectos = (props) => {
         <Card.Body>
           <Card.Title>{props.title}</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
+        {props.text}
           </Card.Text>
-          <Button variant="primary">{props.boton}</Button>
+          <Button variant="primary"> <Example /></Button>
         </Card.Body>
       </Card>
     )

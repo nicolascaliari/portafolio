@@ -4,12 +4,19 @@ import html from '../img/html.png';
 import css3 from '../img/CSS3.svg.png';
 import javascript from '../img/js.svg.png';
 import react from '../img/react.png';
-import python from '../img/python.png';
-
+import python from '../img/py.png';
+import sass from '../img/sass.png';
+import vs from '../img/vs.png';
+import bs from '../img/bs.png';
+import git from '../img/git.png';
+import sql from '../img/sql.png';
+import node from '../img/node.png';
 
 const HomePage = (props) => {
+
   return (
     <div className="contenedor-about">
+      
       <h2 >¡Un placer conocerte!</h2>
 
       <div className="div-about">
@@ -55,6 +62,12 @@ const HomePage = (props) => {
         <img src={javascript} alt="" />
         <img src={react} alt="" />
         <img src={python} alt="" />
+        <img src={sass} alt="" /> 
+        <img src={bs} alt="" />
+        <img src={git} alt="" />
+        <img src={vs} alt="" />
+        <img src={node} alt="" />
+        <img src={sql} alt="" />
       </div>
 
     </div>

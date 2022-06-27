@@ -15,7 +15,7 @@ function Header () {
                 </button>
                 <ul className="nav-menu">
                     <li className="nav-menu-item"> <Link to="/" className="nav-menu-link">Home</Link> </li>
-                    <li className="nav-menu-item"> <a className="nav-menu-link" href='https://github.com/nicolascaliari'>github</a></li>
+                    <li className="nav-menu-item"> <a className="nav-menu-link" href='https://github.com/nicolascaliari' target='_blank'>github</a></li>
                     <li className="nav-menu-item"> <Link to="/" className="nav-menu-link">CV</Link> </li>
                     <li className="nav-menu-item"> <Link to="/ContactPage" className="nav-menu-link">Contactame</Link> </li>
                     

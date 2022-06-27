@@ -1,6 +1,6 @@
 import '../../style/components/layout/Presentacion.css'
 import yo from '../../img/L.png_small';
-import React, { useRef, useState } from "react";
+
 
 
 
@@ -25,7 +25,7 @@ function Presentacion({ text, }) {
             ))} 
           
         </div>
-      <img className='img-yo' src={yo} />
+      <img className='img-yo' src={yo} alt='imagen de mi cara'/>
       </div>
     );
   }

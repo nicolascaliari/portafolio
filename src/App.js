@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React, { useRef, useState } from "react";
+
 
 
 
@@ -11,7 +11,7 @@ import Header from './component/layout/Header';
 import Presentacion from './component/layout/Presentacion';
 import Proyectos from './component/layout/Proyectos';
 import Footer from './component/layout/Footer';
-import CambioColor from './component/CambioColor';
+
 
 
 
@@ -25,7 +25,7 @@ import ContactPage from './pages/ContactPage';
 
 
 function App() {
-  const refLetra = useRef()
+  
   return (
 
     <div className="App">
@@ -55,7 +55,7 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-      <h2 ref={refLetra} className='proyectos-titulo'>Proyectos</h2>
+      <h2 className='proyectos-titulo'>Proyectos</h2>
       <div className='contenedor-proyectos'>
         <Proyectos
           title='fidelityCode'

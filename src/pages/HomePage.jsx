@@ -31,7 +31,7 @@ const HomePage = (props) => {
 
 
         <div className='contenedor-img'>
-          <img className='fotoMia' src={yo} />
+          <img className='fotoMia' src={yo} alt='imagen mia'/>
 
         </div>
 
@@ -57,17 +57,17 @@ const HomePage = (props) => {
       </div>
 
       <div className='contenedor-skills'>
-        <img src={html} alt="" />
-        <img src={css3} alt="" />
-        <img src={javascript} alt="" />
-        <img src={react} alt="" />
-        <img src={python} alt="" />
-        <img src={sass} alt="" /> 
-        <img src={bs} alt="" />
-        <img src={git} alt="" />
-        <img src={vs} alt="" />
-        <img src={node} alt="" />
-        <img src={sql} alt="" />
+        <img src={html} alt="foto de html" />
+        <img src={css3} alt="foto de css" />
+        <img src={javascript} alt="foto javascript" />
+        <img src={react} alt="foto react" />
+        <img src={python} alt="foto python" />
+        <img src={sass} alt="foto sass" /> 
+        <img src={bs} alt="foto bs" />
+        <img src={git} alt="foto git" />
+        <img src={vs} alt="foto vs" />
+        <img src={node} alt="foto node" />
+        <img src={sql} alt="foto sql" />
       </div>
 
     </div>

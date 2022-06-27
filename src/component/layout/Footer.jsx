@@ -1,7 +1,7 @@
 import '../../style/components/layout/Footer.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faInstagram , faGithub , faLinkedin} from '@fortawesome/free-brands-svg-icons'
-import React, { useRef, useState } from "react";
+import React, {useRef} from "react";
 
 
 
@@ -29,17 +29,17 @@ function Footer(props) {
                 <div className='footer-iconos'>
                     <a
                         href="https://www.linkedin.com/in/nicolas-caliari-628236236/"
-                        target="_blank">
+                        >
                         <i><FontAwesomeIcon className='i' icon={faLinkedin} /> </i>
                     </a>
 
 
-                    <a href="https://www.instagram.com/nicolascaliari/" target="_blank">
+                    <a href="https://www.instagram.com/nicolascaliari/" >
                         <i>  <FontAwesomeIcon className='i' icon={faInstagram} /> </i></a>
 
 
 
-                    <a href="https://github.com/nicolascaliari" target="_blank">
+                    <a href="https://github.com/nicolascaliari" >
                         <i>  <FontAwesomeIcon className='i' icon={faGithub} /> </i></a>
                 </div>
             

@@ -1,20 +1,20 @@
 import '../../style/components/layout/Presentacion.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCircle} from '@fortawesome/free-solid-svg-icons'
 import yo from '../../img/L.png_small';
+import React, { useRef, useState } from "react";
 
 
 
 function Presentacion({ text, }) {
     const lenght = text.length;
     const deg = 360 / lenght;
+
   
     return (
       <div className="spinning-text-wrapper"> 
         <div className="spinning-text">
           
             {text.split("").map((letra, i) => (
-              <span
+              <span className='span' 
                 key={i}
                 style={{
                   transform: `rotate(${deg * i}deg)`,

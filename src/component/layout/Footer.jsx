@@ -1,11 +1,16 @@
 import '../../style/components/layout/Footer.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faInstagram , faGithub , faLinkedin} from '@fortawesome/free-brands-svg-icons'
+import React, { useRef, useState } from "react";
+
+
+
 function Footer(props) {
+    const refFooter = useRef()
     return (
         <div className='contenedor-footer'>
-            <div className='footer'>
-                <div className='div-footerh'>
+            
+                <div ref={refFooter} className='div-footerh'>
                     <h2>Nicolas Caliari</h2>
                 </div>
 
@@ -37,7 +42,7 @@ function Footer(props) {
                     <a href="https://github.com/nicolascaliari" target="_blank">
                         <i>  <FontAwesomeIcon className='i' icon={faGithub} /> </i></a>
                 </div>
-            </div>
+            
         </div>
 
     )

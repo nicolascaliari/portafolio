@@ -21,6 +21,7 @@ const Proyectos = (props) => {
           <Button variant="primary"> <Example /></Button>
         </Card.Body>
       </Card>
+      
     )
 };
 

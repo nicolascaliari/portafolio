@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+
 
 
 
@@ -10,6 +11,7 @@ import Header from './component/layout/Header';
 import Presentacion from './component/layout/Presentacion';
 import Proyectos from './component/layout/Proyectos';
 import Footer from './component/layout/Footer';
+import CambioColor from './component/CambioColor';
 
 
 
@@ -23,6 +25,7 @@ import ContactPage from './pages/ContactPage';
 
 
 function App() {
+  const refLetra = useRef()
   return (
 
     <div className="App">
@@ -32,18 +35,16 @@ function App() {
 
       </Presentacion>
 
-
-     
-      <div>
-      <h2>Dashboard</h2>
-      <button
-        onClick={() =>
-          (document.querySelector("body").style.background = "#3c3")
-        }
-      >
-        Verde
-      </button>
-    </div>
+{/*  
+      <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={() =>
+                (document.querySelector("body").style.background = "#3D3D3D")
+                 (refLetra.current.style.color = "#fff")
+                 (refFooter.current.style.color = "#fff")
+                 
+            } />
+            <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+        </div> */}
 
       <BrowserRouter >
         <Header />
@@ -54,7 +55,7 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-      <h2 className='proyectos-titulo'>Proyectos</h2>
+      <h2 ref={refLetra} className='proyectos-titulo'>Proyectos</h2>
       <div className='contenedor-proyectos'>
         <Proyectos
           title='fidelityCode'
@@ -93,11 +94,9 @@ function App() {
           boton='ver detalle'
           img='emprendimiento'
         />
-
-
-
-
       </div>
+
+      
       <Footer />
     </div>
   );

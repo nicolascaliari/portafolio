@@ -1,4 +1,4 @@
-.header {
+/* .header {
     background-color: transparent;
     height: 80px;
     position: absolute;
@@ -60,9 +60,9 @@
     
     display: none;
   }
-  
+   */
   /* MOBILE */
-  @media (max-width: 885px) {
+  /* @media (max-width: 885px) {
 
     .header {
       width: 100%;
@@ -119,6 +119,6 @@
       outline: none;
     }
     
-  }
+  } */
 
 

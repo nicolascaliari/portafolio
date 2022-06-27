@@ -25,17 +25,21 @@ import ContactPage from './pages/ContactPage';
 
 
 function App() {
-  
+
   return (
 
     <div className="App">
 
+
+      <Header />
+
+      
       <Presentacion
         text=' FULL STACK  DEVELOPER '>
 
       </Presentacion>
 
-{/*  
+      {/*  
       <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={() =>
                 (document.querySelector("body").style.background = "#3D3D3D")
@@ -47,7 +51,7 @@ function App() {
         </div> */}
 
       <BrowserRouter >
-        <Header />
+
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='ContactPage' element={<ContactPage />} />
@@ -96,7 +100,7 @@ function App() {
         />
       </div>
 
-      
+
       <Footer />
     </div>
   );

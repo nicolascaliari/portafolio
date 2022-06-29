@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import BurguerButton from './BurguerButton'
+import {Link} from 'react-router-dom';
+import '../../style/components/layout/Header.css'
 
 function Header() {
 
@@ -10,21 +12,21 @@ function Header() {
     setClicked(!clicked)
   }
   return (
-    <>
-      <NavContainer>
+    <header>
+      <NavContainer className='nav'>
         <h2>Nicolas <span>Caliari</span></h2>
         <div className={`links ${clicked ? 'active' : ''}`}>
-          <a onClick={handleClick} href="#h">Home</a>
-          <a onClick={handleClick} href="#h">Github</a>
-          <a onClick={handleClick} href="#h">cv</a>
-          <a onClick={handleClick} href="#h">Contact</a>
+        <li className='li'> <Link className='link' to='/'>Home</Link> </li>
+        <li className='li'> <a href="https://github.com/nicolascaliari">Github</a> </li>
+        <li className='li'> <a href="">CV</a> </li>
+        <li className='li'> <Link className='link' to='/ContactPage'>Contact</Link> </li>
         </div>
         <div className='burguer'>
           <BurguerButton clicked={clicked} handleClick={handleClick} />
         </div>
         <BgDiv className={`initial ${clicked ? ' active' : ''}`}></BgDiv>
       </NavContainer>
-    </>
+    </header>
   )
 }
 
@@ -32,18 +34,18 @@ export default Header
 
 const NavContainer = styled.nav`
   h2{
-    color: #000;
+    color: #fff;
     font-weight: 400;
     span{
       font-weight: bold;
     }
   }
   padding: .4rem;
-  background-color: transparent;
+  background-color: #3D3D3D;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  a{
+  li Link{
     color: #000;
     text-decoration: none;
     margin-right: 1rem;
@@ -58,7 +60,7 @@ const NavContainer = styled.nav`
     text-align: center;
     transition: all .5s ease;
     z-index: 20;
-    a{
+    li{
       color: #000;
       font-size: 2rem;
       display: block;
@@ -71,7 +73,7 @@ const NavContainer = styled.nav`
     @media(min-width: 768px){
       position: initial;
       margin: 0;
-      a{
+      li{
         font-size: 25px;
         color: #000;
         display: inline;
@@ -91,7 +93,7 @@ const NavContainer = styled.nav`
     left: 0;
     right: 0;
     text-align: center;
-    a{
+    li{
       font-size: 2rem;
       margin-top: 1rem;
       color: white;

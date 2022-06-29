@@ -1,4 +1,8 @@
 import '../style/components/pages/HomePage.css'
+import Proyectos from '../component/layout/Proyectos';
+
+
+
 import yo from '../img/yo.jpg';
 import html from '../img/html.png';
 import css3 from '../img/CSS3.svg.png';
@@ -15,6 +19,8 @@ import node from '../img/node.png';
 const HomePage = (props) => {
 
   return (
+   <div> 
+    
     <div className="contenedor-about">
       
       <h2 >¡Un placer conocerte!</h2>
@@ -70,6 +76,59 @@ const HomePage = (props) => {
         <img src={sql} alt="foto sql" />
       </div>
 
+    </div>
+
+<div>
+  <h2 className='proyectos-titulo'>Proyectos</h2>
+      <div className='contenedor-proyectos'>
+        <Proyectos
+          title='fidelityCode'
+          text='Hola esta es una pagina de fidelityCode'
+          boton='ver detalle'
+          img='fidelity'
+          href = "https://fidelitycode.org/"
+
+        />
+        <Proyectos
+          title='Homebanking'
+          text='Hola esta es una pagina de un HomeBnaking'
+          boton='ver detalle'
+          img='home'
+          href ="https://github.com/rostrofioriloabril/HomeBanking"
+        />
+        <Proyectos
+          title='Gimnasio'
+          text='Hola esta es una pagino de un gimnasio'
+          boton='ver detalle'
+          img='gym'
+          href ="https://fidelitycode-gym.netlify.app/"
+        />
+        <Proyectos
+          title='Pomodoro'
+          text='Hola esta es una pagina de proyecto pomodoro'
+          boton='ver detalle'
+          img='gym'
+          href ="https://github.com/nicolascaliari/pomodoro"
+        />
+        <Proyectos
+          title='Disney'
+          text='Hola esta es una pagina de proyecto disney'
+          boton='ver detalle'
+          img='gym'
+          href =""
+        />
+        <Proyectos
+          title='Emprendimiento'
+          text='Hola esta es una pagina de emprendimiento'
+          boton='ver detalle'
+          img='emprendimiento'
+          href = ""
+        />
+      </div>
+
+</div>
+
+    
     </div>
   )
 }

@@ -14,11 +14,13 @@ const Proyectos = (props) => {
         <Card className="Card" style={{ width: '18rem' }}>
         <Card.Img variant="top" src={require(`../../img/img-proy/proy-${props.img}.jpeg`)} />
         <Card.Body>
-          <Card.Title>{props.title}</Card.Title>
-          <Card.Text>
+          <Card.Title className="title">{props.title}</Card.Title>
+          <Card.Text className="text">
         {props.text}
           </Card.Text>
-          <Button variant="primary"> <Example /></Button>
+          <div className="contenedor-boton">
+            <a href={props.href} className="boton">Ver mas</a>
+          </div>
         </Card.Body>
       </Card>
       

@@ -17,7 +17,7 @@ function ContactPage(props) {
 
                     <input type="text" name="mensaje" placeholder="Mensaje" required />
 
-                    <button class="boton-formulario">
+                    <button className="boton-formulario">
                         Enviar
                     </button>
             

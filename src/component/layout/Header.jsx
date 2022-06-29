@@ -18,7 +18,7 @@ function Header() {
         <div className={`links ${clicked ? 'active' : ''}`}>
         <li className='li'> <Link className='link' to='/'>Home</Link> </li>
         <li className='li'> <a href="https://github.com/nicolascaliari">Github</a> </li>
-        <li className='li'> <a href="">CV</a> </li>
+        <li className='li'> <a href="https://github.com/nicolascaliari">CV</a> </li>
         <li className='li'> <Link className='link' to='/ContactPage'>Contact</Link> </li>
         </div>
         <div className='burguer'>

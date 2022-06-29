@@ -1,8 +1,7 @@
 import React from "react";
 import '../../style/components/layout/Proyectos.css'
 import { Card } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import Example from './Modal'
+
 
 
 

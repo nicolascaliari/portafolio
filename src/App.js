@@ -9,7 +9,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css'
 import Header from './component/layout/Header';
 import Presentacion from './component/layout/Presentacion';
-import Proyectos from './component/layout/Proyectos';
 import Footer from './component/layout/Footer';
 
 

@@ -1,4 +1,5 @@
 import '../../style/components/layout/Footer.css'
+import '../../App.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faInstagram , faGithub , faLinkedin} from '@fortawesome/free-brands-svg-icons'
 import React, {useRef} from "react";

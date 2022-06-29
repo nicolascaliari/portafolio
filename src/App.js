@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import {faSun} from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -30,36 +30,29 @@ function App() {
     <div className="App">
 
 
+
       <BrowserRouter >
         <Header />
-        <Presentacion
-        text=' FULL STACK  DEVELOPER '>
 
-      </Presentacion>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={() =>
+            document.querySelector("body").classList.toggle("darkmode")
+
+
+          } /> 
+
+        </div>
+
+
+        <Presentacion
+          text=' FULL STACK  DEVELOPER '>
+
+        </Presentacion>
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='ContactPage' element={<ContactPage />} />
         </Routes>
       </BrowserRouter>
-
-
-      
-
-      {/*  
-      <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={() =>
-                (document.querySelector("body").style.background = "#3D3D3D")
-                 
-                 
-            } />
-            <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-        </div> */}
-
-
-
-
-    
-
 
       <Footer />
     </div>

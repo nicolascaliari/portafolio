@@ -1,6 +1,6 @@
 import '../../style/components/layout/Presentacion.css'
 import yo from '../../img/L.png_small';
-
+import '../../App.css'
 
 
 

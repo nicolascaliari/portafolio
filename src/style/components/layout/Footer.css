@@ -8,14 +8,12 @@
 }
 
 .div-footerh {
-    color: #fff;
     margin: 20px;
     text-align: center;
 }
 
 .div-footerh h2 {
     font-size: 50px;
-    color: #000;
     font-weight: 1000;
     text-align: center;
 }
@@ -23,14 +21,13 @@
 .div-footerh h3 {
     text-align: center;
     font-size: 30px;
-    color: #000;
 
 }
 
 .div-footerh h4 {
     text-align: center;
     font-size: 20px;
-    color: #000;
+
 }
 
 
@@ -49,7 +46,6 @@
 }
 
 .footer-iconos a {
-    color: #fff;
     background-color: transparent;
     text-decoration: none;
     cursor: pointer;

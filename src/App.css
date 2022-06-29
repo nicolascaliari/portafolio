@@ -6,14 +6,14 @@
     
 }
 
+.darkmode {
+    background: #252222 !important;
+    color: #fff !important;
+  }
 
 
 
 
-.icono {
-    background-color: black;
-    color: black;
-}
 
 .contenedor-proyectos{
     margin-top: 60px;
@@ -37,6 +37,8 @@
       align-items: center;
   }
 }
+
+
 
 
 

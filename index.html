@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title data-i18n="doc_title">Nicolas Caliari | Freelance Backend Developer</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563eb",
+                        "background-light": "#fcfcfc",
+                        "background-dark": "#0d1117",
+                        "slate-custom": "#475569",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "3xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; }
+        .hero-pattern {
+            background-color: #fcfcfc;
+            background-image: radial-gradient(#2563eb 0.5px, transparent 0.5px);
+            background-size: 32px 32px;
+            opacity: 1;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .avatar-glow {
+            box-shadow: 0 0 40px -10px rgba(37, 99, 235, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .hero-animate {
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        .hero-animate-delay-1 { animation-delay: 0.15s; }
+        .hero-animate-delay-2 { animation-delay: 0.3s; }
+        .hero-animate-delay-3 { animation-delay: 0.45s; }
+
+        .hero-photo {
+            animation: scaleIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+            opacity: 0;
+        }
+
+        .nav-animate {
+            animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-400 { transition-delay: 0.4s; }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300">
+
+    <!-- NAV -->
+    <nav
+        class="nav-animate sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg shadow-primary/20">
+                        <span class="text-white font-black text-lg">NC</span>
+                    </div>
+                    <span class="font-extrabold text-xl tracking-tight">Nicolas <span
+                            class="text-primary">Caliari</span></span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+                        <button onclick="setLanguage('en')" id="lang-en" class="px-2 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-bold transition-all bg-white dark:bg-slate-700 shadow-sm text-primary">EN</button>
+                        <button onclick="setLanguage('es')" id="lang-es" class="px-2 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-bold transition-all text-slate-500 hover:text-primary">ES</button>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a data-i18n="nav_cases" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors"
+                            href="#solutions">Real Cases</a>
+                        <a data-i18n="nav_approach" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors"
+                            href="#process">My Approach</a>
+                        <a data-i18n="nav_about" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors"
+                            href="#about">About Me</a>
+                        <a data-i18n="nav_cta" class="bg-primary text-white px-6 py-3 rounded-xl text-sm font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center gap-2"
+                            href="https://wa.me/36705433645?text=Hello,%20I%20saw%20your%20website%20and%20want%20to%20schedule%20a%20strategic%20call." target="_blank">
+                            Book a strategic call
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="relative overflow-hidden py-20 lg:py-32 hero-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="flex-1 text-center lg:text-left">
+                    <h1 class="hero-animate text-5xl lg:text-7xl font-black text-slate-900 dark:text-white leading-tight mb-8">
+                        <span data-i18n="hero_title">Freelance backend developer.</span> <span
+                            data-i18n="hero_highlight" class="text-primary text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">APIs, backends & systems that ship to production.</span>
+                    </h1>
+                    <p
+                        data-i18n="hero_desc_1" class="hero-animate hero-animate-delay-1 text-xl text-slate-600 dark:text-slate-400 mb-4 max-w-2xl leading-relaxed mx-auto lg:mx-0">
+                        3+ years in companies and freelance projects. Node.js, Express, NestJS, GraphQL, Docker, Kubernetes, and CI/CD.
+                    </p>
+                    <p data-i18n="hero_desc_2" class="hero-animate hero-animate-delay-1 text-lg text-slate-500 dark:text-slate-500 mb-10 max-w-2xl leading-relaxed mx-auto lg:mx-0">
+                        Available for startups and teams that need reliable backends and digital products.
+                    </p>
+                    <div class="hero-animate hero-animate-delay-2 flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <a href="#solutions"
+                            class="bg-primary text-white px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-primary/30 transition-all flex items-center gap-2">
+                            <span data-i18n="hero_cta_1">View real cases</span>
+                            <span class="material-symbols-outlined text-sm">arrow_downward</span>
+                        </a>
+                        <a data-i18n="hero_cta_2" href="https://wa.me/36705433645?text=Hello,%20I%20saw%20your%20website%20and%20I%20would%20like%20to%20schedule%20a%20strategic%20call%20to%20discuss%20my%20project."
+                            target="_blank"
+                            class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-8 py-4 rounded-xl font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-50 transition-all inline-block">
+                            Let's talk about your project
+                        </a>
+                    </div>
+                </div>
+                <div class="flex-1 relative">
+                    <div class="hero-photo flex justify-center items-end">
+                        <div class="relative w-52 h-64 lg:w-64 lg:h-80">
+                            <div class="absolute inset-0 bg-primary/10 rounded-3xl rotate-3"></div>
+                            <div class="absolute inset-0 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-3xl -rotate-2 transition-transform hover:rotate-0 duration-500 overflow-hidden avatar-glow">
+                                <img alt="Nicolas Caliari"
+                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                                    src="./public/foto.png" />
+                                <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-slate-900/80 to-transparent">
+                                    <p data-i18n="hero_member_1" class="text-white text-xs font-bold uppercase tracking-widest">Nicolas Caliari</p>
+                                    <p data-i18n="hero_member_role" class="text-white/80 text-[10px] font-medium mt-1">Backend Developer · Freelancer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SERVICIOS -->
+    <section id="services"
+        class="py-24 bg-white dark:bg-background-dark border-b border-slate-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="reveal text-center mb-20">
+                <h2 data-i18n="services_title" class="text-4xl font-black mb-4">Technology designed to scale your business</h2>
+                <p data-i18n="services_desc" class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+                    I create digital systems that optimize processes, automate operations, and support the growth of early-stage and expanding startups.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- Plataformas Web -->
+                <div
+                    class="reveal delay-100 bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary text-3xl">language</span>
+                    </div>
+                    <h3 data-i18n="service_1_title" class="text-xl font-bold mb-4">Scalable Web Platforms</h3>
+                    <p data-i18n="service_1_desc" class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        I build web systems, admin panels, and e-commerce platforms designed to grow with you.
+                        Solid architectures that support more users, sales, and operations without collapsing.
+                    </p>
+                </div>
+
+                <!-- Apps Móviles -->
+                <div
+                    class="reveal delay-200 bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary text-3xl">smartphone</span>
+                    </div>
+                    <h3 data-i18n="service_2_title" class="text-xl font-bold mb-4">Mobile Apps that drive traction</h3>
+                    <p data-i18n="service_2_desc" class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        I develop iOS and Android apps focused on user experience, retention, and conversion.
+                        Integrated with your backend and aligned with your business model.
+                    </p>
+                </div>
+
+                <!-- Sistemas Internos -->
+                <div
+                    class="reveal delay-300 bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary text-3xl">desktop_windows</span>
+                    </div>
+                    <h3 data-i18n="service_3_title" class="text-xl font-bold mb-4">High-Performance Internal Systems</h3>
+                    <p data-i18n="service_3_desc" class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        I replace manual processes with internal tools that reduce errors, save time
+                        and improve decision-making across your organization.
+                    </p>
+                </div>
+
+                <!-- Automatización -->
+                <div
+                    class="reveal delay-400 bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary text-3xl">build</span>
+                    </div>
+                    <h3 data-i18n="service_4_title" class="text-xl font-bold mb-4">Smart Automation and Digitalization</h3>
+                    <p data-i18n="service_4_desc" class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        I eliminate spreadsheets, repetitive tasks, and bottlenecks through custom systems
+                        that optimize your resources and increase operational efficiency.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CASOS REALES -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24" id="solutions">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div class="reveal max-w-2xl">
+                <h2 data-i18n="cases_title" class="text-4xl font-black mb-4">Real cases. Real impact.</h2>
+                <p data-i18n="cases_desc" class="text-lg text-slate-500 dark:text-slate-400">Projects that optimized sales, automated operations, and improved internal management.</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+            <!-- Barfer -->
+            <div
+                class="reveal-left group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden hover:border-primary/30 transition-all duration-500 shadow-sm hover:shadow-2xl">
+                <div class="flex flex-col h-full">
+                    <div class="h-64 bg-slate-100 dark:bg-slate-800 relative overflow-hidden">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="public/image%20copy.png" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-6 left-8">
+                            <span data-i18n="case_1_tag"
+                                class="bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-3 inline-block">Barfer Alimentos</span>
+                            <h3 data-i18n="case_1_title" class="text-3xl font-bold text-white">E-commerce + Comprehensive Management</h3>
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <p data-i18n="case_1_desc" class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">
+                            I designed and implemented a complete e-commerce platform with an integrated order and shipping system,
+                            reducing operational friction and improving the shopping experience.
+                        </p>
+                        <div
+                            class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                            <a href="https://www.barferalimento.com/" target="_blank"
+                                class="text-primary hover:text-blue-800 font-bold flex items-center gap-2 group/btn">
+                                <span data-i18n="view_case">View case</span>
+                                <span
+                                    class="material-symbols-outlined text-lg transition-transform group-hover/btn:translate-x-1">
+                                    arrow_forward
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Raw & Fun -->
+            <div
+                class="reveal-right delay-200 group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden hover:border-primary/30 transition-all duration-500 shadow-sm hover:shadow-2xl">
+                <div class="flex flex-col h-full">
+                    <div class="h-64 bg-slate-100 dark:bg-slate-800 relative overflow-hidden">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="public/image%20copy%202.png" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-6 left-8">
+                            <span data-i18n="case_2_tag"
+                                class="bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-3 inline-block">Raw & Fun</span>
+                            <h3 data-i18n="case_2_title" class="text-3xl font-bold text-white">Sales and Administration Platform</h3>
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <p data-i18n="case_2_desc" class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">
+                            I developed a digital ecosystem that integrates sales, customer management, and product control
+                            into a single system, allowing operations to scale more efficiently.
+                        </p>
+                        <div
+                            class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                            <a href="https://raw-app-orcin.vercel.app/es" target="_blank"
+                                class="text-primary hover:text-blue-800 font-bold flex items-center gap-2 group/btn">
+                                <span data-i18n="view_case">View case</span>
+                                <span
+                                    class="material-symbols-outlined text-lg transition-transform group-hover/btn:translate-x-1">
+                                    arrow_forward
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Milena Makeup -->
+            <div
+                class="reveal-scale delay-300 group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden hover:border-primary/30 transition-all duration-500 shadow-sm hover:shadow-2xl">
+                <div class="flex flex-col h-full">
+                    <div class="h-64 bg-slate-100 dark:bg-slate-800 relative overflow-hidden">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="public/image.png" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-6 left-8">
+                            <span data-i18n="case_3_tag"
+                                class="bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-3 inline-block">Milena Makeup</span>
+                            <h3 data-i18n="case_3_title" class="text-3xl font-bold text-white">Strategic Professional Presence</h3>
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <p data-i18n="case_3_desc" class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">
+                            I created a modern digital platform that positions the brand, facilitates client contact
+                            and professionalizes service presentation.
+                        </p>
+                        <div
+                            class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                            <a href="https://milu28.netlify.app/" target="_blank"
+                                class="text-primary hover:text-blue-800 font-bold flex items-center gap-2 group/btn">
+                                <span data-i18n="view_case">View case</span>
+                                <span
+                                    class="material-symbols-outlined text-lg transition-transform group-hover/btn:translate-x-1">
+                                    arrow_forward
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gestor de Negocio -->
+            <div
+                class="reveal delay-400 group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden hover:border-primary/30 transition-all duration-500 shadow-sm hover:shadow-2xl">
+                <div class="flex flex-col h-full">
+                    <div class="h-64 bg-slate-100 dark:bg-slate-800 relative overflow-hidden" id="carousel">
+                        <div class="carousel-track flex h-full transition-transform duration-500 ease-in-out">
+                            <img class="w-full h-full object-cover flex-shrink-0" src="public/image%20copy%203.png" />
+                            <img class="w-full h-full object-cover flex-shrink-0" src="public/image%20copy%204.png" />
+                            <img class="w-full h-full object-cover flex-shrink-0" src="public/image%20copy%205.png" />
+                            <img class="w-full h-full object-cover flex-shrink-0" src="public/image%20copy%206.png" />
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
+                        <button onclick="moveCarousel(-1)"
+                            class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all shadow-lg z-10">
+                            <span class="material-symbols-outlined text-slate-700 dark:text-white text-lg">chevron_left</span>
+                        </button>
+                        <button onclick="moveCarousel(1)"
+                            class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all shadow-lg z-10">
+                            <span class="material-symbols-outlined text-slate-700 dark:text-white text-lg">chevron_right</span>
+                        </button>
+                        <div class="absolute bottom-16 left-1/2 -translate-x-1/2 flex gap-2 z-10" id="carousel-dots">
+                            <button class="w-2 h-2 rounded-full bg-white transition-all"></button>
+                            <button class="w-2 h-2 rounded-full bg-white/40 transition-all"></button>
+                            <button class="w-2 h-2 rounded-full bg-white/40 transition-all"></button>
+                            <button class="w-2 h-2 rounded-full bg-white/40 transition-all"></button>
+                        </div>
+                        <div class="absolute bottom-6 left-8 z-10">
+                            <span data-i18n="case_4_tag"
+                                class="bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-3 inline-block">Management System</span>
+                            <h3 data-i18n="case_4_title" class="text-3xl font-bold text-white">Business Management System</h3>
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <p data-i18n="case_4_desc" class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">
+                            I implemented a comprehensive system with a control panel and key metrics that improve
+                            decision-making and optimize the company's daily operations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- COMPROMISO / PARTNER -->
+    <section class="bg-slate-50 dark:bg-slate-900/50 py-24 border-y border-slate-200 dark:border-slate-800"
+        id="process">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal text-center mb-16">
+                <h2 data-i18n="partner_title" class="text-4xl font-black mb-4">I'm not a vendor. I'm your tech partner.</h2>
+                <p data-i18n="partner_desc" class="text-lg text-slate-500">I work alongside founders and teams as a strategic ally, aligning technology with business goals.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+                <div class="reveal delay-100 space-y-4">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto md:mx-0">
+                        <span class="material-symbols-outlined text-primary text-3xl">handshake</span>
+                    </div>
+                    <h3 data-i18n="partner_1_title" class="text-xl font-bold">Direct contact and shared vision</h3>
+                    <p data-i18n="partner_1_desc" class="text-slate-500 text-sm leading-relaxed">You work directly with me, without intermediaries or unnecessary layers. I understand your vision and turn it into a product.</p>
+                </div>
+                <div class="reveal delay-200 space-y-4">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto md:mx-0">
+                        <span class="material-symbols-outlined text-primary text-3xl">query_stats</span>
+                    </div>
+                    <h3 data-i18n="partner_2_title" class="text-xl font-bold">Focus on growth and profitability</h3>
+                    <p data-i18n="partner_2_desc" class="text-slate-500 text-sm leading-relaxed">Every technical decision impacts scalability, efficiency, and ROI. I think about your business, not just the code.</p>
+                </div>
+                <div class="reveal delay-300 space-y-4">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto md:mx-0">
+                        <span class="material-symbols-outlined text-primary text-3xl">verified</span>
+                    </div>
+                    <h3 data-i18n="partner_3_title" class="text-xl font-bold">Long-term partnership</h3>
+                    <p data-i18n="partner_3_desc" class="text-slate-500 text-sm leading-relaxed">I don't disappear after launch. I evolve the system alongside your startup as it grows and scales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTROS -->
+    <section id="about" class="py-24 bg-white dark:bg-background-dark border-t border-slate-100 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="reveal text-center mb-16">
+                <h2 data-i18n="about_title" class="text-4xl font-black mb-4">About Me</h2>
+                <p data-i18n="about_subtitle" class="text-lg text-slate-500 dark:text-slate-400">
+                    More than code, I build solutions that create real impact.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                <!-- Texto -->
+                <div class="reveal-left space-y-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+
+                    <p data-i18n="about_p1">
+                        I combine <strong class="text-slate-900 dark:text-white">technical expertise in backend development with commercial and strategic vision.</strong>
+                        I don't just write code: I analyze the business model and design systems that drive growth.
+                    </p>
+
+                    <p data-i18n="about_p2">
+                        I have over
+                        <strong class="text-slate-900 dark:text-white">3 years of professional experience working with companies</strong>,
+                        plus additional experience as a freelancer. In corporate environments I developed backend systems with
+                        Node.js, Express, and NestJS — working with REST APIs, GraphQL, microservices, Docker, Kubernetes,
+                        and CI/CD pipelines on production systems that directly impact daily operations.
+                    </p>
+
+                    <p data-i18n="about_p3">
+                        I work with founders and teams looking for a trusted technical partner — someone who understands the business, not just the technology.
+                        I take on every project as if it were my own.
+                    </p>
+
+                    <a data-i18n="about_cta" href="https://wa.me/36705433645?text=Hello,%20I%20want%20to%20talk%20about%20my%20project."
+                        target="_blank" rel="noopener noreferrer"
+                        class="inline-block mt-4 bg-primary text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-all">
+                        Let's talk about your project
+                    </a>
+
+                </div>
+
+                <!-- Card especialidades -->
+                <div
+                    class="reveal-right delay-200 bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <h3 data-i18n="exp_title" class="text-xl font-bold mb-6">My technical expertise includes:</h3>
+
+                    <ul class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+                        <li data-i18n="exp_1">✔ Robust and scalable backend architectures</li>
+                        <li data-i18n="exp_2">✔ REST & GraphQL APIs and microservices design</li>
+                        <li data-i18n="exp_3">✔ Docker, Kubernetes, and CI/CD pipelines</li>
+                        <li data-i18n="exp_4">✔ Business process automation and integrations</li>
+                        <li data-i18n="exp_5">✔ Strategic consulting for key technological decisions</li>
+                    </ul>
+
+                    <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
+                        <p data-i18n="stack_title" class="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-3">Tech Stack</p>
+                        <p data-i18n="stack_list" class="text-sm text-slate-500 dark:text-slate-400">Node.js · Express · NestJS · GraphQL · REST APIs · Docker · Kubernetes · CI/CD · Next.js · iOS & Android</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-background-dark py-16 border-t border-slate-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal flex flex-col md:flex-row justify-between items-center gap-12">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
+                        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                            <span class="text-white font-black text-sm">NC</span>
+                        </div>
+                        <span class="font-extrabold text-xl tracking-tight">Nicolas <span
+                                class="text-primary">Caliari</span></span>
+                    </div>
+                    <p data-i18n="footer_slogan" class="text-slate-500 dark:text-slate-400 max-w-sm">Building strategic technology for startups that want to grow without limits.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-8">
+                    <div class="flex gap-8">
+                        <a class="text-slate-400 hover:text-primary transition-colors font-bold text-sm"
+                            href="https://www.linkedin.com/in/nicolas-caliari-628236236/" target="_blank">LinkedIn</a>
+                        <a class="text-slate-400 hover:text-primary transition-colors font-bold text-sm"
+                            href="https://github.com/nicolascaliari" target="_blank">GitHub</a>
+                        <a data-i18n="footer_book" class="text-slate-400 hover:text-primary transition-colors font-bold text-sm"
+                            href="https://wa.me/36705433645?text=Hello,%20I%20want%20to%20schedule%20a%20strategic%20call%20to%20discuss%20my%20project."
+                            target="_blank">Book a Call</a>
+                    </div>
+                    <a data-i18n="footer_cta" href="https://wa.me/36705433645?text=Hello,%20I%20want%20to%20start%20a%20project."
+                        target="_blank"
+                        class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">Start a Project</a>
+                </div>
+            </div>
+            <div
+                data-i18n="footer_copy" class="mt-16 pt-8 border-t border-slate-100 dark:border-slate-800 text-center text-xs text-slate-400 font-medium">
+                © 2026 Nicolas Caliari. Freelance Backend Developer.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                doc_title: "Nicolas Caliari | Freelance Backend Developer",
+                nav_cases: "Real Cases",
+                nav_approach: "My Approach",
+                nav_about: "About Me",
+                nav_cta: "Book a strategic call",
+                hero_title: "Freelance backend developer.",
+                hero_highlight: "APIs, backends & systems that ship to production.",
+                hero_desc_1: "3+ years in companies and freelance projects. Node.js, Express, NestJS, GraphQL, Docker, Kubernetes, and CI/CD.",
+                hero_desc_2: "Available for startups and teams that need reliable backends and digital products.",
+                hero_cta_1: "View real cases",
+                hero_cta_2: "Let's talk about your project",
+                hero_member_1: "Nicolas Caliari",
+                hero_member_role: "Backend Developer · Freelancer",
+                services_title: "Technology designed to scale your business",
+                services_desc: "I create digital systems that optimize processes, automate operations, and support the growth of early-stage and expanding startups.",
+                service_1_title: "Scalable Web Platforms",
+                service_1_desc: "I build web systems, admin panels, and e-commerce platforms designed to grow with you. Solid architectures that support more users, sales, and operations without collapsing.",
+                service_2_title: "Mobile Apps that drive traction",
+                service_2_desc: "I develop iOS and Android apps focused on user experience, retention, and conversion. Integrated with your backend and aligned with your business model.",
+                service_3_title: "High-Performance Internal Systems",
+                service_3_desc: "I replace manual processes with internal tools that reduce errors, save time and improve decision-making across your organization.",
+                service_4_title: "Smart Automation and Digitalization",
+                service_4_desc: "I eliminate spreadsheets, repetitive tasks, and bottlenecks through custom systems that optimize your resources and increase operational efficiency.",
+                cases_title: "Real cases. Real impact.",
+                cases_desc: "Projects that optimized sales, automated operations, and improved internal management.",
+                case_1_desc: "I designed and implemented a complete e-commerce platform with an integrated order and shipping system, reducing operational friction and improving the shopping experience.",
+                case_1_tag: "Barfer Alimentos",
+                case_1_title: "E-commerce + Comprehensive Management",
+                case_2_desc: "I developed a digital ecosystem that integrates sales, customer management, and product control into a single system, allowing operations to scale more efficiently.",
+                case_2_tag: "Raw & Fun",
+                case_2_title: "Sales and Administration Platform",
+                case_3_desc: "I created a modern digital platform that positions the brand, facilitates client contact and professionalizes service presentation.",
+                case_3_tag: "Milena Makeup",
+                case_3_title: "Strategic Professional Presence",
+                case_4_desc: "I implemented a comprehensive system with a control panel and key metrics that improve decision-making and optimize the company's daily operations.",
+                case_4_tag: "Management System",
+                case_4_title: "Business Management System",
+                view_case: "View case",
+                partner_title: "I'm not a vendor. I'm your tech partner.",
+                partner_desc: "I work alongside founders and teams as a strategic ally, aligning technology with business goals.",
+                partner_1_title: "Direct contact and shared vision",
+                partner_1_desc: "You work directly with me, without intermediaries or unnecessary layers. I understand your vision and turn it into a product.",
+                partner_2_title: "Focus on growth and profitability",
+                partner_2_desc: "Every technical decision impacts scalability, efficiency, and ROI. I think about your business, not just the code.",
+                partner_3_title: "Long-term partnership",
+                partner_3_desc: "I don't disappear after launch. I evolve the system alongside your startup as it grows and scales.",
+                about_title: "About Me",
+                about_subtitle: "More than code, I build solutions that create real impact.",
+                about_p1: "I combine <strong class=\"text-slate-900 dark:text-white\">technical expertise in backend development with commercial and strategic vision.</strong> I don't just write code: I analyze the business model and design systems that drive growth.",
+                about_p2: "I have over <strong class=\"text-slate-900 dark:text-white\">3 years of professional experience working with companies</strong>, plus additional experience as a freelancer. In corporate environments I developed backend systems with Node.js, Express, and NestJS — working with REST APIs, GraphQL, microservices, Docker, Kubernetes, and CI/CD pipelines on production systems that directly impact daily operations.",
+                about_p3: "I work with founders and teams looking for a trusted technical partner — someone who understands the business, not just the technology. I take on every project as if it were my own.",
+                about_cta: "Let's talk about your project",
+                exp_title: "My technical expertise includes:",
+                exp_1: "✔ Robust and scalable backend architectures",
+                exp_2: "✔ REST & GraphQL APIs and microservices design",
+                exp_3: "✔ Docker, Kubernetes, and CI/CD pipelines",
+                exp_4: "✔ Business process automation and integrations",
+                exp_5: "✔ Strategic consulting for key technological decisions",
+                stack_title: "Tech Stack",
+                stack_list: "Node.js · Express · NestJS · GraphQL · REST APIs · Docker · Kubernetes · CI/CD · Next.js · iOS & Android",
+                footer_slogan: "Building strategic technology for startups that want to grow without limits.",
+                footer_book: "Book a Call",
+                footer_cta: "Start a Project",
+                footer_copy: "© 2026 Nicolas Caliari. Freelance Backend Developer.",
+                wa_hero: "Hello, I saw your website and I'd like to talk about my project.",
+                wa_nav: "Hello, I saw your website and want to schedule a strategic call.",
+                wa_about: "Hello, I want to talk about my project.",
+                wa_footer_book: "Hello, I want to schedule a strategic call to discuss my project.",
+                wa_footer_start: "Hello, I want to start a project."
+            },
+            es: {
+                doc_title: "Nicolas Caliari | Desarrollador Backend Freelance",
+                nav_cases: "Casos Reales",
+                nav_approach: "Mi Enfoque",
+                nav_about: "Sobre Mí",
+                nav_cta: "Agendar llamada estratégica",
+                hero_title: "Desarrollador backend freelance.",
+                hero_highlight: "APIs, backends y sistemas que van a producción.",
+                hero_desc_1: "3+ años en empresas y proyectos freelance. Node.js, Express, NestJS, GraphQL, Docker, Kubernetes y CI/CD.",
+                hero_desc_2: "Disponible para startups y equipos que necesitan backends sólidos y productos digitales.",
+                hero_cta_1: "Ver casos reales",
+                hero_cta_2: "Hablemos de tu proyecto",
+                hero_member_1: "Nicolas Caliari",
+                hero_member_role: "Backend Developer · Freelancer",
+                services_title: "Tecnología diseñada para escalar tu negocio",
+                services_desc: "Creo sistemas digitales que optimizan procesos, automatizan operaciones y acompañan el crecimiento de startups en etapa temprana y en expansión.",
+                service_1_title: "Plataformas Web Escalables",
+                service_1_desc: "Construyo sistemas web, paneles administrativos y e-commerce pensados para crecer contigo. Arquitecturas sólidas que soportan más usuarios, más ventas y más operaciones sin colapsar.",
+                service_2_title: "Aplicaciones Móviles que generan tracción",
+                service_2_desc: "Desarrollo apps para iOS y Android enfocadas en experiencia de usuario, retención y conversión. Integradas con tu backend y alineadas a tu modelo de negocio.",
+                service_3_title: "Sistemas Internos de Alto Rendimiento",
+                service_3_desc: "Reemplazo procesos manuales por herramientas internas que reducen errores, ahorran tiempo y mejoran la toma de decisiones en toda tu organización.",
+                service_4_title: "Automatización y Digitalización Inteligente",
+                service_4_desc: "Elimino planillas, tareas repetitivas y cuellos de botella mediante sistemas a medida que optimizan tus recursos y aumentan tu eficiencia operativa.",
+                cases_title: "Casos reales. Impacto real.",
+                cases_desc: "Proyectos que optimizaron ventas, automatizaron operaciones y mejoraron la gestión interna.",
+                case_1_desc: "Diseñé e implementé un e-commerce completo con sistema integrado de pedidos y envíos, reduciendo fricción operativa y mejorando la experiencia de compra.",
+                case_1_tag: "Barfer Alimentos",
+                case_1_title: "E-commerce + Gestión Integral",
+                case_2_desc: "Desarrollé un ecosistema digital que integra ventas, gestión de clientes y control de productos en un solo sistema, permitiendo escalar operaciones con mayor eficiencia.",
+                case_2_tag: "Raw & Fun",
+                case_2_title: "Plataforma de Ventas y Administración",
+                case_3_desc: "Creé una plataforma digital moderna que posiciona la marca, facilita el contacto con clientes y profesionaliza la presentación del servicio.",
+                case_3_tag: "Milena Makeup",
+                case_3_title: "Presencia Profesional Estratégica",
+                case_4_desc: "Implementé un sistema integral con panel de control y métricas clave que mejoran la toma de decisiones y optimizan la operación diaria de la empresa.",
+                case_4_tag: "Sistema de Gestión",
+                case_4_title: "Sistema de Gestión Empresarial",
+                view_case: "Ver caso",
+                partner_title: "No soy un proveedor. Soy tu partner tecnológico.",
+                partner_desc: "Trabajo junto a founders y equipos como aliado estratégico, alineando tecnología con objetivos de negocio.",
+                partner_1_title: "Contacto directo y visión compartida",
+                partner_1_desc: "Trabajás directamente conmigo, sin intermediarios ni capas innecesarias. Entiendo tu visión y la convierto en producto.",
+                partner_2_title: "Enfoque en crecimiento y rentabilidad",
+                partner_2_desc: "Cada decisión técnica tiene impacto en escalabilidad, eficiencia y retorno de inversión. Pienso en tu negocio, no solo en el código.",
+                partner_3_title: "Acompañamiento a largo plazo",
+                partner_3_desc: "No desaparezco después del lanzamiento. Evoluciono el sistema junto con tu startup a medida que crece y escala.",
+                about_title: "Sobre Mí",
+                about_subtitle: "Más que código, construyo soluciones que generan impacto real.",
+                about_p1: "Combino <strong class=\"text-slate-900 dark:text-white\">experiencia técnica en desarrollo backend con visión comercial y estratégica.</strong> No solo escribo código: analizo el modelo de negocio y diseño sistemas que potencian crecimiento.",
+                about_p2: "Cuento con más de <strong class=\"text-slate-900 dark:text-white\">3 años de experiencia profesional trabajando en empresas</strong>, además de experiencia como freelancer. En entornos corporativos desarrollé backends con Node.js, Express y NestJS — trabajando con APIs REST, GraphQL, microservicios, Docker, Kubernetes y pipelines de CI/CD en sistemas productivos que impactan directamente las operaciones diarias.",
+                about_p3: "Trabajo con founders y equipos que buscan un socio técnico de confianza — alguien que entienda el negocio, no solo la tecnología. Cada proyecto lo tomo como si fuera propio.",
+                about_cta: "Hablemos de tu proyecto",
+                exp_title: "Mi experiencia técnica incluye:",
+                exp_1: "✔ Arquitecturas backend robustas y escalables",
+                exp_2: "✔ Diseño de APIs REST, GraphQL y microservicios",
+                exp_3: "✔ Docker, Kubernetes y pipelines de CI/CD",
+                exp_4: "✔ Automatización de procesos e integraciones",
+                exp_5: "✔ Consultoría estratégica para decisiones tecnológicas clave",
+                stack_title: "Stack tecnológico",
+                stack_list: "Node.js · Express · NestJS · GraphQL · REST APIs · Docker · Kubernetes · CI/CD · Next.js · iOS & Android",
+                footer_slogan: "Construyendo tecnología estratégica para startups que quieren crecer sin límites.",
+                footer_book: "Agendar Llamada",
+                footer_cta: "Empezar un Proyecto",
+                footer_copy: "© 2026 Nicolas Caliari. Desarrollador Backend Freelance.",
+                wa_hero: "Hola, vi tu web y me gustaría hablar de mi proyecto.",
+                wa_nav: "Hola, vi tu web y quiero agendar una llamada estratégica.",
+                wa_about: "Hola, quiero hablar sobre mi proyecto.",
+                wa_footer_book: "Hola, quiero agendar una llamada estratégica para hablar de mi proyecto.",
+                wa_footer_start: "Hola, quiero empezar un proyecto."
+            }
+        };
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            localStorage.setItem('preferred-lang', lang);
+
+            // Update text content
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    if (el.tagName === 'TITLE') {
+                        document.title = translations[lang][key];
+                    } else if (el.tagName === 'A' && el.href.includes('wa.me')) {
+                        const originalUrl = new URL(el.href);
+                        const phoneNumber = originalUrl.pathname.replace('/', '');
+                        const waKey = `wa_${key.split('_')[1]}`;
+                        // Special handling for WA links if needed, but easier to just update the text and rely on key
+                        el.innerText = translations[lang][key];
+                    } else {
+                        // Preserve inner HTML if it has tags (like spans in hero title)
+                        const hasTags = el.querySelector('span');
+                        if (hasTags && lang === 'en') {
+                             // This is tricky for the hero title which has a span inside.
+                             // I'll handle specifically or just use a more granular approach.
+                        }
+                        el.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+
+            // Update WhatsApp links text
+            // (Already handled in the loop above if they have data-i18n and simple text)
+            // But let's fix the hrefs too
+            document.querySelectorAll('a[href*="wa.me"]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (key) {
+                    const waKey = `wa_${key.split('_')[1]}`;
+                    const waText = translations[lang][waKey] || translations[lang]['wa_nav'];
+                    const baseUrl = el.href.split('?text=')[0];
+                    el.href = `${baseUrl}?text=${encodeURIComponent(waText)}`;
+                }
+            });
+
+            // Update button styles
+            document.getElementById('lang-en').className = lang === 'en' 
+                ? 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white dark:bg-slate-700 shadow-sm text-primary'
+                : 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-500 hover:text-primary';
+            
+            document.getElementById('lang-es').className = lang === 'es'
+                ? 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white dark:bg-slate-700 shadow-sm text-primary'
+                : 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-500 hover:text-primary';
+        }
+
+        // Initialize language
+        const savedLang = localStorage.getItem('preferred-lang') || 'en';
+        setLanguage(savedLang);
+    </script>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Carousel
+        let carouselIndex = 0;
+        const totalSlides = 4;
+        function moveCarousel(dir) {
+            carouselIndex = (carouselIndex + dir + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+        function updateCarousel() {
+            const track = document.querySelector('.carousel-track');
+            track.style.transform = `translateX(-${carouselIndex * 100}%)`;
+            const dots = document.querySelectorAll('#carousel-dots button');
+            dots.forEach((dot, i) => {
+                dot.className = i === carouselIndex
+                    ? 'w-2 h-2 rounded-full bg-white transition-all scale-125'
+                    : 'w-2 h-2 rounded-full bg-white/40 transition-all';
+            });
+        }
+        document.querySelectorAll('#carousel-dots button').forEach((dot, i) => {
+            dot.addEventListener('click', () => { carouselIndex = i; updateCarousel(); });
+        });
+    </script>
+
+</body>
+
+</html>
